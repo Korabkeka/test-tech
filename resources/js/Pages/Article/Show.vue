@@ -1,9 +1,9 @@
 <script setup>
 //import Layout from './Layout'
+import ArticlePreview from '../../Components/ArticlePreview.vue';
 import { Head } from '@inertiajs/vue3'
 
 const props = defineProps({ articles: Object })
-console.log(props.articles)
 </script>
 
 <template>
@@ -11,7 +11,7 @@ console.log(props.articles)
     <!--<Head title="Welcome" />-->
     <h1>Welcome</h1>
     <ul>
-        <li v-for="article in articles">{{ article.title }}</li>
+        <ArticlePreview v-for="article in props.articles" :key="article.id" :article="article"/>
     </ul>
     <p>Hello , welcome to your first Inertia app!</p>
   <!--</Layout>-->

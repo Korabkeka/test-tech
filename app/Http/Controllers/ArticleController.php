@@ -25,8 +25,8 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         //dd($article);
-        return Inertia::render('Article/Show', [
-            'article' => ["title"=>"Test"]
+        return Inertia::render('Article/Detail', [
+            'article' => $article
         ]);
 
     }
