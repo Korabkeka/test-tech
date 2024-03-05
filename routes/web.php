@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ArticleController::class, "all"]);
+
+Route::get('/articles/{id}', [ArticleController::class, "show"]);
+
+Route::post('/articles/new', function(){
+    // create new article
+})->name('article.create');
+
+Route::put('articles/update/{id}', function(){
+    //update article wich id is {id}
+})->name('article.update');
+
+Route::delete('articles/delete/{id}', function(){
+    //delete article wich id is {id}
+})->name('article.delete');
