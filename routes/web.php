@@ -18,14 +18,14 @@ Route::get('/', [ArticleController::class, "all"]);
 
 Route::get('/articles/{id}', [ArticleController::class, "show"]);
 
-Route::post('/articles/new', function(){
-    // create new article
-})->name('article.create');
+Route::get('/new', [ArticleController::class, "create"]);
 
-Route::put('articles/update/{id}', function(){
+Route::post('/store', [ArticleController::class, "store"]);
+
+Route::put('/update/{id}', function(){
     //update article wich id is {id}
 })->name('article.update');
 
-Route::delete('articles/delete/{id}', function(){
+Route::delete('/delete/{id}', function(){
     //delete article wich id is {id}
 })->name('article.delete');

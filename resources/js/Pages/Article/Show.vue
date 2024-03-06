@@ -1,7 +1,7 @@
 <script setup>
 //import Layout from './Layout'
 import ArticlePreview from '../../Components/ArticlePreview.vue';
-import { Head } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({ articles: Object })
 </script>
@@ -10,6 +10,7 @@ const props = defineProps({ articles: Object })
   <!--<Layout>-->
     <!--<Head title="Welcome" />-->
     <h1>Welcome</h1>
+    <Link href="/new">Nouvel article</Link>
     <ul>
         <ArticlePreview v-for="article in props.articles" :key="article.id" :article="article"/>
     </ul>

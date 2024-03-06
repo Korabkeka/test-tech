@@ -11,5 +11,11 @@ class Article extends Model
     use HasFactory, HasUuids;
 
     //public $incrementing = false;
+    protected $fillable = [
+        'title',
+        'content',
+        'category',
+        'imageUrl'
+    ];
 
 }
