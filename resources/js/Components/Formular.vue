@@ -1,16 +1,18 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3'
-
+const props = defineProps({
+    article: Object,
+    submitHandler: Object
+})
 const form = useForm({
-    title: null,
-    content: null,
-    category: null,
+    title: props?.article?.title,
+    content: props?.article?.content,
+    category: props?.article?.category,
     image: null
 })
-
-function submit() {
-    console.log(form.data())
-    form.post('/store')
+function submit()
+{
+    if(props.submitHandler)props.submitHandler(form)
 }
 </script>
 
@@ -31,3 +33,7 @@ function submit() {
         <button type="submit">Envoyer</button>
     </form>
 </template>
+
+<style scoped>
+
+</style>

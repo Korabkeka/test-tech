@@ -16,16 +16,12 @@ use App\Http\Controllers\ArticleController;
 
 Route::get('/', [ArticleController::class, "all"]);
 
-Route::get('/articles/{id}', [ArticleController::class, "show"]);
+Route::get('/articles/{article}', [ArticleController::class, "show"]);
 
 Route::get('/new', [ArticleController::class, "create"]);
 
 Route::post('/store', [ArticleController::class, "store"]);
 
-Route::put('/update/{id}', function(){
-    //update article wich id is {id}
-})->name('article.update');
+Route::post('/update/{article}', [ArticleController::class, "update"]);
 
-Route::delete('/delete/{id}', function(){
-    //delete article wich id is {id}
-})->name('article.delete');
+Route::delete('/delete/{article}', [ArticleController::class, "delete"]);

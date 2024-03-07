@@ -104,6 +104,14 @@ return [
             ],
             'processors' => [PsrLogMessageProcessor::class],
         ],
+        'stdout' => [
+            'driver' => 'monolog',
+            'handler' => Monolog\Handler\StreamHandler::class,
+            'formatter' => null,
+            'with' => [
+                'stream' => 'php://stdout',
+            ],
+        ],
 
         'syslog' => [
             'driver' => 'syslog',

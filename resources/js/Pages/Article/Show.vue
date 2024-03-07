@@ -7,15 +7,14 @@ const props = defineProps({ articles: Object })
 </script>
 
 <template>
-  <!--<Layout>-->
-    <!--<Head title="Welcome" />-->
-    <h1>Welcome</h1>
+    <header class="container flex mx-auto w-full h-20 items-center justify-center">
+        <h1 class="text-2xl">Test technique: Basic Blog</h1>
+    </header>
+
     <Link href="/new">Nouvel article</Link>
     <ul>
         <ArticlePreview v-for="article in props.articles" :key="article.id" :article="article"/>
     </ul>
-    <p>Hello , welcome to your first Inertia app!</p>
-  <!--</Layout>-->
 </template>
 <style>
 </style>
