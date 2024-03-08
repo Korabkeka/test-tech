@@ -1,8 +1,8 @@
 <script setup>
 
 import {computed, ref} from "vue";
-import Formular from "@/Components/Articles/Formular.vue";
-import Confirm from "@/Components/Articles/Confirm.vue";
+import Formular from "@/Components/Formular.vue";
+import Confirm from "@/Components/Confirm.vue";
 import {useForm} from "@inertiajs/vue3";
 
 const props = defineProps({article: Object})
@@ -36,13 +36,7 @@ const imageUrl = computed(()=>{
 </script>
 
 <template>
-    <main>
-        <ul>
-            <li>...</li>
-            <li @click="toggleFormular">{{ isModifying?"cancel" : "modify"}}</li>
-            <li v-if="!isConfirmOpen" @click="toggleVisibility">delete</li>
-        </ul>
-    </main>
+    <button @click="toggleFormular">{{ isModifying?"cancel" : "modify"}}</button>
     <Formular v-if="isModifying" :article="props?.article" :submitHandler="update"/>
     <div v-else>
         <h1>{{ props?.article?.title }}</h1>
@@ -51,5 +45,6 @@ const imageUrl = computed(()=>{
         <p>{{ props?.article?.content }}</p>
         <p>created: {{ props?.article?.created_at }} / updated: {{ props?.article?.updated_at }}</p>
     </div>
+    <button v-if="!isConfirmOpen" @click="toggleVisibility">delete</button>
     <Confirm action-type="supprimer" @confirm.once="remove" @cancel="toggleVisibility" :visible="isConfirmOpen"/>
 </template>

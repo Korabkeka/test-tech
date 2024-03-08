@@ -1,6 +1,6 @@
 <script setup>
 //import Layout from './Layout'
-import ArticlePreview from '../../Components/Articles/ArticlePreview.vue';
+import ArticlePreview from '../../Components/ArticlePreview.vue';
 import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({ articles: Object })

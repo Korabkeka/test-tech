@@ -16,4 +16,6 @@
         </h2>
         <div class="flex justify-end">{{ props?.article?.updated_at }}</div>
     </Link>
+
+
 </template>
