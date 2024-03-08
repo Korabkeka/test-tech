@@ -2,7 +2,7 @@
 import { useForm } from '@inertiajs/vue3'
 const props = defineProps({
     article: Object,
-    submitHandler: Object
+    submitHandler: Function
 })
 const form = useForm({
     title: props?.article?.title,
