@@ -14,13 +14,15 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::get('/', [ArticleController::class, "all"]);
+Route::get('/', [ArticleController::class, "all"])->name('all');
 
-Route::get('/articles/{article}', [ArticleController::class, "show"]);
+Route::post('/', [ArticleController::class, "allWithParams"]);
 
-Route::get('/new', [ArticleController::class, "create"]);
+Route::get('/articles/{article}', [ArticleController::class, "show"])->name('article');
 
-Route::post('/store', [ArticleController::class, "store"]);
+Route::get('/new', [ArticleController::class, "create"])->name('new');
+
+Route::post('/store', [ArticleController::class, "store"])->name('store');
 
 Route::post('/update/{article}', [ArticleController::class, "update"]);
 

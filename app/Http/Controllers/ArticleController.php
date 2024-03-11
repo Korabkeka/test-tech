@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ArticleCollection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Article;
@@ -9,14 +10,54 @@ use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
-
 class ArticleController extends Controller
 {
-    public function all()
+    public function all(Request $request)
     {
-        $articles = Article::all();
+        $articles = Article::query();
+
+        $filter = $request->input('filter');
+        if($filter !== null && $filter !== "all")
+        {
+            $articles = $articles->where('categorie', $filter);
+        }
+
+        $orderBy = $request->input('order');
+        if($orderBy === null)
+        {
+            $orderBy = 'desc';
+        }
+        $articles = $articles->orderBy('updated_at', $orderBy);
+
+        $page = $request->input("page");
+        if($page === null){
+            $page = 1;
+        }
+
+        $count = $request->input("count");
+        if($count === null){
+            $count = 15;
+        }
+        $articles = $articles->paginate($count);
+
+        $articlesCollection = new ArticleCollection($articles);
+
         return Inertia::render('Article/Show', [
-            'articles' => $articles
+            'articles' => $articlesCollection,
+            'per_page' => $count,
+            'current_page' => $page,
+            'filter'=> $filter,
+            'order_by'=> $orderBy
+        ]);
+    }
+
+    public function allWithParams(Request $request)
+    {
+        return redirect()->route('all',[
+            "page"=>$request->input("page"),
+            "count"=>$request->input("count"),
+            "filter"=>$request->input('filter'),
+            "order"=>$request->input('order')
         ]);
     }
 
@@ -26,7 +67,6 @@ class ArticleController extends Controller
         return Inertia::render('Article/Detail', [
             'article' => $article
         ]);
-
     }
 
     public function create() : Response
@@ -67,7 +107,9 @@ class ArticleController extends Controller
         $image = $request->file('image');
         if($article->imageUrl && $image !== null)
         {
-            Storage::disk('public')->delete($article->imageUrl);
+            if(!str_contains($article->imageUrl, "http")){
+                Storage::disk('public')->delete($article->imageUrl);
+            }
             $article->imageUrl = $image->store("Articles", "public");
         }
         $article->update();

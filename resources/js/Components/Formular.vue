@@ -1,9 +1,11 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3'
+import {ref} from "vue";
 const props = defineProps({
     article: Object,
-    submitHandler: Object
+    submitHandler: Function
 })
+const select = ref(null)
 const form = useForm({
     title: props?.article?.title,
     content: props?.article?.content,
@@ -24,10 +26,16 @@ function submit()
         </div>
         <div class="flex my-4">
             <label for="category" class="flex justify-start items-center w-20 h-full">Catégorie:</label>
-            <select name="category" id="category" v-model="form.category" class="grow bg-gray-100">
+            <select
+                name="category"
+                id="category"
+                v-model="form.category"
+                class="grow bg-gray-100"
+            >
+                <option disabled value="">Please select one</option>
                 <option value="food">Food</option>
                 <option value="sport">Sport</option>
-                <option value="technology">Technologie</option>
+                <option value="tech">Technologie</option>
             </select>
         </div>
         <div class="flex my-4">
