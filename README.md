@@ -4,7 +4,7 @@
 
 Mission: Création d'un blog simple avec une page listing, une page detail, un formulaire de création/modification.
 
-Requis: Laravel, VueJs, TailwindCss 
+Requis: Laravel, VueJs (composition), TailwindCss 
 
 <strong>Installation: </strong>
 
@@ -20,7 +20,18 @@ Requis: Laravel, VueJs, TailwindCss
 
 <strong>Explications: </strong>
 
+Pour l'installation et la mise en route du projet, j'ai utilisé un starter kit de laravel: breeze.
+Cela m'a permis d'avoir une base d'application préconfigurée pour le rendu des vues en VueJs. Une petite librairie du nom de InertiaJs m'a permis de lier laravel à Vue, en offrant la possibilité de gérer le routing coté back, de passer les props au composants directement depuis le Controller, tout en gardant la flexibilité d'une UI dynamique côté front étant donné que nous ne sommes pas sur du SSR. J'ai choisi cette solution par curiosité et dans l'intérêt d'avoir un setup rapide. Le principal inconvénient est le couplage fort que cela crée entre le back et le front. 
+L'autre solution, et après réflexion, dans un context réel serai selon moi meilleur, est d'utiliser Laravel comme API Rest, puis de créer "n" applications capable de la consommer.
 
+<strong>Conclusion: </strong>
+
+J'espère avoir pu au travers de ce test technique vous montrer mes capacitées, ma curiosité et mon envie d'apprendre (car à part Vue, je ne connaissais pas les autres technos). 
+Vous avez également pu voir quelques défauts comme l'utilisation de git.
+
+Je serais ravi de pouvoir échanger avec vous à propos de ce test. 
+
+<strong>Korab</strong>
 
 
 
