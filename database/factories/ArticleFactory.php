@@ -16,10 +16,16 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
+        $categories = [
+          "food",
+          "sport",
+          "tech"
+        ];
+        $random = $categories[rand(0,2)];
         return [
             "title" => $this->faker->sentence(),
             "content" => $this->faker->paragraphs(3,true),
-            "categorie" => $this->faker->word(),
+            "categorie" => $random,
             "imageUrl" => $this->faker->imageUrl(640, 480, null, true)
         ];
     }
