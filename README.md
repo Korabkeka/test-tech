@@ -13,10 +13,11 @@ Requis: Laravel, VueJs (composition), TailwindCss
 3.- Installer les dépendances du projet laravel <code>composer install</code>
 4.- Installer les dépendances du frontend <code>npm install</code>
 5.- Créer un fichier .env à la racine et y copier le contenu du fichier .env.example 
-6.- Créer la base de données et la peupler grace au seeder <code>php artisan migrate</code>
-7.- Générer une app key <code>php artisan key:generate</code>
-8.- Démarrer le serveur front <code>npm run dev</code>
-9.- Démarrer le serveur back <code>php artisan serve</code>
+6.- Créer la base de données et les différentes tables <code>php artisan migrate</code>
+7.- la peupler grace au seeder <code>php artisan db:seed</code>
+8.- Générer une app key <code>php artisan key:generate</code>
+9.- Démarrer le serveur front <code>npm run dev</code>
+10.- Démarrer le serveur back <code>php artisan serve</code>
 
 <strong>Explications: </strong>
 
